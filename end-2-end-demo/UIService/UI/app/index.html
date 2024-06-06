@@ -1,0 +1,117 @@
+<!-- Copyright 2018 Google LLC  -->
+
+<!-- Licensed under the Apache License, Version 2.0 (the "License");  -->
+<!-- you may not use this file except in compliance with the License.  -->
+<!-- You may obtain a copy of the License at  -->
+
+<!--     https://www.apache.org/licenses/LICENSE-2.0  -->
+
+<!-- Unless required by applicable law or agreed to in writing, software  -->
+<!-- distributed under the License is distributed on an "AS IS" BASIS,  -->
+<!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  -->
+<!-- See the License for the specific language governing permissions and  -->
+<!-- limitations under the License.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Basic Unary GRPC example</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script>
+  const script = document.createElement('script');
+  script.src = `./main.js?v=${Date.now()}`;
+  document.head.appendChild(script);
+</script>
+<style>
+  body {
+    background-color: black;
+  }
+  .myContainer {
+      width: 25%;
+      height: 1000px;
+  }
+  .bigContainer {
+    width: 60%;
+    height: 500px;
+  }
+  .bigContainer model-viewer {
+    width: 100%;
+    height: 100%;
+    /* background-color: rgb(237 108 62 / 9%); */
+    background-color: rgb(237 108 62);
+    /* box-shadow: 0.5rem 0.5rem black, -0.5rem -0.5rem #ccc; */
+    /* box-shadow: 0 10px 10px -5px; */
+    box-shadow: 5px 5px 20px #d1d0d0;
+    border-radius: 20px;
+  }
+
+  .model {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+  }
+  .slot {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  button.myContainer {
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .img-thumbnail {
+    cursor: pointer;
+    box-shadow: 1px 2px 12px;
+    transition: all .2s ease-in-out;
+  }
+  .img-thumbnail.car{
+    width: 70px;
+    height: 70px;
+  }
+  .img-thumbnail.robot{
+    width: 50px;
+    height: 90px;
+  }
+  .img-thumbnail.xbox{
+    width: 70px;
+    height: 60px;
+  }
+  .img-thumbnail:hover {
+    transform: scale(0.8);
+  }
+  .img-thumbnail:hover, .selected {
+    /* border-color: rgb(237,108,62);
+    border-width: 2px; */
+    box-shadow: -5px -5px 30px 1px rgb(237 108 62), 5px 5px 30px 1px #80808c;
+  }
+
+</style>
+</head>
+<body>
+  <div class="model">
+    <div class="bigContainer">
+      <model-viewer  id="showpiece"  src="./asset/source/330 America.glb" shadow-intensity="1" camera-controls touch-action="none"
+        camera-orbit="45deg 55deg 4m"
+        render-scale="0.5">
+        <div class="slot canvas"></div>
+      </model-viewer>
+    </div>
+  </div>
+
+  <div class="model">
+    <img src="./asset/images/blackCar.png" name="1" class="img-thumbnail car modelImage selected">
+    <img src="./asset/images/yellowCar.png" name="2" class="img-thumbnail car modelImage">
+    <img src="./asset/images/robot.png" name="3" class="img-thumbnail robot modelImage">
+    <img src="./asset/images/xbox.png" name="4" class="img-thumbnail xbox modelImage">
+  </div>
+</body>
+</html>

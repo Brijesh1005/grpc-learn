@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "infantdemo.domain";
+option java_outer_classname = "DomainProto";
+option objc_class_prefix = "DP";
+
+package domain;
+
+service DomainService {
+  rpc GetDomainUrl (DomainRequest) returns (ModelPath) {}
+}
+
+message DomainRequest {
+  int32 id = 1;
+}
+
+message ModelPath {
+  string modelPath = 1;
+}

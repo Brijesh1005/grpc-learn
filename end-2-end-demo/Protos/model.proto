@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "infantdemo.model";
+option java_outer_classname = "ModelProto";
+option objc_class_prefix = "MP";
+
+package model;
+
+service Model {
+  rpc GetModelName (ModelRequest) returns (ModelDetailsReply) {}
+}
+
+message ModelRequest {
+  int32 id = 1;
+}
+
+message ModelDetailsReply {
+  int32 id = 1;
+  string name = 2;
+}
